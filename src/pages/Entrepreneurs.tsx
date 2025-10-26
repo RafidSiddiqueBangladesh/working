@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Check, Sparkles, TrendingUp, Globe } from "lucide-react";
 import { Link } from "react-router-dom";
+import PublicHeader from "@/components/PublicHeader";
 
 const Entrepreneurs = () => {
   const benefits = [
@@ -17,32 +18,7 @@ const Entrepreneurs = () => {
 
   return (
     <div className="min-h-screen bg-gradient-hero">
-      <header className="border-b bg-card/50 backdrop-blur-sm sticky top-0 z-10">
-        <div className="container mx-auto px-6 py-4 flex items-center justify-between">
-          <Link to="/">
-            <h1 className="text-2xl font-bold bg-gradient-primary bg-clip-text text-transparent">
-              CommerceHub
-            </h1>
-          </Link>
-          <nav className="hidden md:flex items-center gap-6">
-            <Link to="/">
-              <Button variant="ghost">Home</Button>
-            </Link>
-            <Link to="/products">
-              <Button variant="ghost">Products</Button>
-            </Link>
-            <Link to="/entrepreneurs">
-              <Button variant="ghost">Entrepreneurs</Button>
-            </Link>
-            <Link to="/about">
-              <Button variant="ghost">About</Button>
-            </Link>
-            <Link to="/login">
-              <Button>Login</Button>
-            </Link>
-          </nav>
-        </div>
-      </header>
+      <PublicHeader />
 
       <main className="container mx-auto px-6 py-20">
         <div className="max-w-4xl mx-auto text-center mb-16">

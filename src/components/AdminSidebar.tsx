@@ -20,6 +20,7 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@/components/ui/sidebar";
+import { useUI } from "@/context/UIContext";
 
 const items = [
   { title: "Dashboard", url: "/admin/overview", icon: LayoutDashboard },
@@ -35,13 +36,14 @@ const items = [
 export function AdminSidebar() {
   const { state } = useSidebar();
   const collapsed = state === "collapsed";
+  const { t } = useUI();
 
   return (
     <Sidebar className={collapsed ? "w-14" : "w-64"} collapsible="icon">
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupLabel className={collapsed ? "justify-center" : ""}>
-            {collapsed ? "A" : "Admin Panel"}
+            {collapsed ? "A" : t("Admin Panel")}
           </SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
@@ -57,7 +59,7 @@ export function AdminSidebar() {
                       }
                     >
                       <item.icon className="h-4 w-4" />
-                      {!collapsed && <span>{item.title}</span>}
+                      {!collapsed && <span>{t(item.title)}</span>}
                     </NavLink>
                   </SidebarMenuButton>
                 </SidebarMenuItem>

@@ -1,6 +1,7 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Package, ShoppingCart, Users, TrendingUp } from "lucide-react";
+import { Package, ShoppingCart, Users, TrendingUp, ShoppingBag, Megaphone, BarChart3, Sparkles, Globe } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const EntrepreneurOverview = () => {
   const stats = [
@@ -33,6 +34,31 @@ const EntrepreneurOverview = () => {
             <p className="text-sm text-muted-foreground">{stat.label}</p>
           </Card>
         ))}
+      </div>
+
+      {/* Feature shortcuts */}
+      <div className="mb-8">
+        <h3 className="text-xl font-semibold mb-4">Feature Segments</h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {[
+            { icon: ShoppingBag, title: "Product Management", slug: "product" },
+            { icon: Megaphone, title: "Social Media Integration", slug: "social" },
+            { icon: BarChart3, title: "Advanced Analytics", slug: "analytics" },
+            { icon: TrendingUp, title: "Growth Tools", slug: "growth" },
+            { icon: Sparkles, title: "AI Assistant", slug: "ai" },
+            { icon: Globe, title: "Multi-language", slug: "language" },
+          ].map((f) => (
+            <Link key={f.slug} to={`/entrepreneur/features/${f.slug}/home`} className="block">
+              <Card className="p-6 bg-gradient-card border-0 shadow-card hover:shadow-elegant transition-all duration-300 hover:scale-105">
+                <div className="mb-4 p-3 bg-primary/10 rounded-lg w-fit">
+                  <f.icon className="h-6 w-6 text-primary" />
+                </div>
+                <h4 className="text-lg font-semibold">{f.title}</h4>
+                <p className="text-sm text-muted-foreground">Explore tools and insights</p>
+              </Card>
+            </Link>
+          ))}
+        </div>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">

@@ -11,10 +11,11 @@ import {
   Check,
 } from "lucide-react";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useUI } from "@/context/UIContext";
+import PublicHeader from "@/components/PublicHeader";
 
 const Index = () => {
-  const [language, setLanguage] = useState<"en" | "bn">("en");
+  const { language } = useUI();
 
   const content = {
     en: {
@@ -66,60 +67,49 @@ const Index = () => {
       icon: ShoppingBag,
       title: "Product Management",
       description: "AI-powered product descriptions and inventory tracking",
+      slug: "product",
+      image: "https://picsum.photos/seed/feature-product/800/400",
     },
     {
       icon: Megaphone,
       title: "Social Media Integration",
       description: "Manage Facebook, Instagram, and YouTube from one place",
+      slug: "social",
+      image: "https://picsum.photos/seed/feature-social/800/400",
     },
     {
       icon: BarChart3,
       title: "Advanced Analytics",
       description: "Track sales, engagement, and customer insights",
+      slug: "analytics",
+      image: "https://picsum.photos/seed/feature-analytics/800/400",
     },
     {
       icon: TrendingUp,
       title: "Growth Tools",
       description: "AI recommendations for pricing and marketing",
+      slug: "growth",
+      image: "https://picsum.photos/seed/feature-growth/800/400",
     },
     {
       icon: Sparkles,
       title: "AI Assistant",
       description: "Automated customer support and content generation",
+      slug: "ai",
+      image: "https://picsum.photos/seed/feature-ai/800/400",
     },
     {
       icon: Globe,
       title: "Multi-language",
       description: "Full support for Bangla and English",
+      slug: "language",
+      image: "https://picsum.photos/seed/feature-language/800/400",
     },
   ];
 
   return (
     <div className="min-h-screen bg-gradient-hero">
-      <header className="border-b bg-card/50 backdrop-blur-sm sticky top-0 z-10">
-        <div className="container mx-auto px-6 py-4 flex items-center justify-between">
-          <h1 className="text-2xl font-bold bg-gradient-primary bg-clip-text text-transparent">
-            CommerceHub
-          </h1>
-          <nav className="hidden md:flex items-center gap-6">
-            <Link to="/">
-              <Button variant="ghost">Home</Button>
-            </Link>
-            <Link to="/products">
-              <Button variant="ghost">Products</Button>
-            </Link>
-            <Link to="/entrepreneurs">
-              <Button variant="ghost">Entrepreneurs</Button>
-            </Link>
-            <Link to="/about">
-              <Button variant="ghost">About</Button>
-            </Link>
-            <Link to="/login">
-              <Button>Login</Button>
-            </Link>
-          </nav>
-        </div>
-      </header>
+      <PublicHeader />
 
       <section className="container mx-auto px-6 py-20 text-center">
         <div className="max-w-4xl mx-auto">
@@ -153,16 +143,22 @@ const Index = () => {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {features.map((feature, index) => (
-            <Card
-              key={index}
-              className="p-6 bg-gradient-card border-0 shadow-card hover:shadow-elegant transition-all duration-300 hover:scale-105"
-            >
-              <div className="mb-4 p-3 bg-primary/10 rounded-lg w-fit">
-                <feature.icon className="h-6 w-6 text-primary" />
-              </div>
-              <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
-              <p className="text-muted-foreground">{feature.description}</p>
-            </Card>
+            <Link key={index} to={`/features/${feature.slug}/home`} className="block">
+              <Card
+                className="p-6 bg-gradient-card border-0 shadow-card hover:shadow-elegant transition-all duration-300 hover:scale-105"
+              >
+                <img
+                  src={feature.image}
+                  alt={feature.title}
+                  className="mb-4 w-full h-28 object-cover rounded-md"
+                />
+                <div className="mb-4 p-3 bg-primary/10 rounded-lg w-fit">
+                  <feature.icon className="h-6 w-6 text-primary" />
+                </div>
+                <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
+                <p className="text-muted-foreground">{feature.description}</p>
+              </Card>
+            </Link>
           ))}
         </div>
       </section>
@@ -193,9 +189,14 @@ const Index = () => {
                 </li>
               ))}
             </ul>
-            <Link to="/admin" className="block">
-              <Button className="w-full">Access Admin Panel</Button>
-            </Link>
+            <div className="flex gap-3">
+              <Link to="/admin/overview">
+                <Button>Go to Admin</Button>
+              </Link>
+              <Link to="/admin/login">
+                <Button variant="outline">Admin Login</Button>
+              </Link>
+            </div>
           </Card>
 
           <Card className="p-8 shadow-elegant hover:shadow-elegant transition-all duration-300 hover:scale-105">
@@ -221,18 +222,19 @@ const Index = () => {
                 </li>
               ))}
             </ul>
-            <Link to="/entrepreneur" className="block">
-              <Button className="w-full">Access Dashboard</Button>
-            </Link>
+            <div className="flex gap-3">
+              <Link to="/entrepreneur/overview">
+                <Button>Go to Entrepreneur</Button>
+              </Link>
+              <Link to="/login">
+                <Button variant="outline">Entrepreneur Login</Button>
+              </Link>
+            </div>
           </Card>
         </div>
       </section>
 
-      <footer className="border-t py-8 mt-20">
-        <div className="container mx-auto px-6 text-center text-muted-foreground">
-          <p>© 2025 CommerceHub. Powered by cutting-edge technology.</p>
-        </div>
-      </footer>
+      {/* Global Footer is rendered via App.tsx */}
     </div>
   );
 };

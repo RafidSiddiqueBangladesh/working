@@ -20,6 +20,7 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@/components/ui/sidebar";
+import { useUI } from "@/context/UIContext";
 
 const items = [
   { title: "Dashboard", url: "/entrepreneur/overview", icon: LayoutDashboard },
@@ -35,13 +36,14 @@ const items = [
 export function EntrepreneurSidebar() {
   const { state } = useSidebar();
   const collapsed = state === "collapsed";
+  const { t } = useUI();
 
   return (
     <Sidebar className={collapsed ? "w-14" : "w-64"} collapsible="icon">
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupLabel className={collapsed ? "justify-center" : ""}>
-            {collapsed ? "E" : "Entrepreneur"}
+            {collapsed ? "E" : t("Entrepreneur")}
           </SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
@@ -57,7 +59,7 @@ export function EntrepreneurSidebar() {
                       }
                     >
                       <item.icon className="h-4 w-4" />
-                      {!collapsed && <span>{item.title}</span>}
+                      {!collapsed && <span>{t(item.title)}</span>}
                     </NavLink>
                   </SidebarMenuButton>
                 </SidebarMenuItem>

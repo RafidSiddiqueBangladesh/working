@@ -18,7 +18,7 @@ const PlatformSettings = () => {
           <div className="space-y-4">
             <div className="space-y-2">
               <Label htmlFor="platform-name">Platform Name</Label>
-              <Input id="platform-name" defaultValue="CommerceHub" />
+              <Input id="platform-name" defaultValue="Mindspring 30" />
             </div>
             <div className="space-y-2">
               <Label htmlFor="tagline">Tagline</Label>
@@ -59,7 +59,7 @@ const PlatformSettings = () => {
           <div className="space-y-4">
             <div className="space-y-2">
               <Label htmlFor="meta-title">Meta Title</Label>
-              <Input id="meta-title" defaultValue="CommerceHub - AI-Powered eCommerce" />
+              <Input id="meta-title" defaultValue="Mindspring 30 - AI-Powered eCommerce" />
             </div>
             <div className="space-y-2">
               <Label htmlFor="meta-desc">Meta Description</Label>

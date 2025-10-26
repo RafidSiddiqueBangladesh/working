@@ -116,3 +116,76 @@ All colors MUST be HSL.
     @apply bg-background text-foreground;
   }
 }
+
+/* Scoped panel theme: white text with permanent violet accents */
+@layer base {
+  .panel-white-violet {
+    /* High-contrast palette: dark surfaces, white text, violet accents */
+    --background: 240 10% 7%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 7%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 7%;
+    --popover-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 90%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --accent: 262 83% 58%;
+    --accent-foreground: 0 0% 100%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 262 83% 58%;
+
+    /* Sidebar permanent violet accents */
+    --sidebar-background: 240 10% 7%;
+    --sidebar-foreground: 262 83% 58%;
+    --sidebar-primary: 262 83% 58%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 262 83% 58%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 262 83% 58%;
+
+    /* Dark hero gradient for readability */
+    --gradient-hero: linear-gradient(180deg, hsl(240 10% 3.9%), hsl(240 10% 7%));
+  }
+  .panel-light-elegant {
+    /* Soft light theme with high contrast for readability */
+    --background: 220 40% 97%;
+    --foreground: 240 10% 12%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 12%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 12%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 5% 40%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 12%;
+    --primary: 217 91% 60%; /* vivid blue */
+    --primary-foreground: 0 0% 100%;
+    --accent: 262 83% 58%; /* violet accent */
+    --accent-foreground: 0 0% 100%;
+    --border: 240 5.9% 88%;
+    --input: 240 5.9% 88%;
+    --ring: 217 91% 60%;
+
+    /* Gentle hero gradient for panels */
+    --gradient-hero: linear-gradient(180deg, hsl(220 60% 98%), hsl(220 40% 96%));
+    --gradient-card: linear-gradient(135deg, hsl(217 91% 60% / 0.06), hsl(262 83% 58% / 0.06));
+
+    /* Refined shadows for light surfaces */
+    --shadow-elegant: 0 12px 32px -10px hsl(217 91% 60% / 0.18);
+    --shadow-card: 0 6px 24px -6px hsl(240 10% 10% / 0.12);
+
+    /* Sidebar tokens for better contrast */
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 240 10% 20%;
+    --sidebar-primary: 217 91% 60%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 4.8% 96.5%;
+    --sidebar-accent-foreground: 240 10% 20%;
+    --sidebar-border: 240 5.9% 88%;
+    --sidebar-ring: 217 91% 60%;
+  }
+}

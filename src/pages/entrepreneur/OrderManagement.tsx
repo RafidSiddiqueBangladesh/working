@@ -2,6 +2,7 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { useUI } from "@/context/UIContext";
 
 const EntrepreneurOrderManagement = () => {
   const orders = {
@@ -18,17 +19,18 @@ const EntrepreneurOrderManagement = () => {
     ],
   };
 
+  const { t } = useUI();
   const renderOrders = (orderList: typeof orders.pending) => (
     <div className="overflow-x-auto">
       <table className="w-full">
         <thead className="border-b">
           <tr>
-            <th className="text-left p-4 font-semibold">Order ID</th>
-            <th className="text-left p-4 font-semibold">Customer</th>
-            <th className="text-left p-4 font-semibold">Items</th>
-            <th className="text-left p-4 font-semibold">Total</th>
-            <th className="text-left p-4 font-semibold">Date</th>
-            <th className="text-left p-4 font-semibold">Actions</th>
+            <th className="text-left p-4 font-semibold">{t("Order ID")}</th>
+            <th className="text-left p-4 font-semibold">{t("Customer")}</th>
+            <th className="text-left p-4 font-semibold">{t("Items")}</th>
+            <th className="text-left p-4 font-semibold">{t("Total")}</th>
+            <th className="text-left p-4 font-semibold">{t("Date")}</th>
+            <th className="text-left p-4 font-semibold">{t("Actions")}</th>
           </tr>
         </thead>
         <tbody>
@@ -40,7 +42,7 @@ const EntrepreneurOrderManagement = () => {
               <td className="p-4 font-semibold">{order.total}</td>
               <td className="p-4 text-muted-foreground">{order.date}</td>
               <td className="p-4">
-                <Button variant="outline" size="sm">View</Button>
+                <Button variant="outline" size="sm">{t("View")}</Button>
               </td>
             </tr>
           ))}
@@ -52,16 +54,16 @@ const EntrepreneurOrderManagement = () => {
   return (
     <div>
       <div className="mb-8">
-        <h1 className="text-3xl font-bold mb-2">Order Management</h1>
-        <p className="text-muted-foreground">Track and fulfill your customer orders</p>
+        <h1 className="text-3xl font-bold mb-2">{t("Order Management")}</h1>
+        <p className="text-muted-foreground">{t("Track and fulfill your customer orders")}</p>
       </div>
 
       <Card className="shadow-card">
         <Tabs defaultValue="pending" className="w-full">
           <TabsList className="w-full justify-start border-b rounded-none">
-            <TabsTrigger value="pending">Pending ({orders.pending.length})</TabsTrigger>
-            <TabsTrigger value="processing">Processing ({orders.processing.length})</TabsTrigger>
-            <TabsTrigger value="completed">Completed ({orders.completed.length})</TabsTrigger>
+            <TabsTrigger value="pending">{t("Pending")} ({orders.pending.length})</TabsTrigger>
+            <TabsTrigger value="processing">{t("Processing")} ({orders.processing.length})</TabsTrigger>
+            <TabsTrigger value="completed">{t("Completed")} ({orders.completed.length})</TabsTrigger>
           </TabsList>
           <TabsContent value="pending" className="p-0">
             {renderOrders(orders.pending)}

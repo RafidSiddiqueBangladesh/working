@@ -1,6 +1,7 @@
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { useUI } from "@/context/UIContext";
 
 const OrderManagement = () => {
   const orders = [
@@ -25,11 +26,12 @@ const OrderManagement = () => {
     }
   };
 
+  const { t } = useUI();
   return (
     <div>
       <div className="mb-8">
-        <h1 className="text-3xl font-bold mb-2">Order Management</h1>
-        <p className="text-muted-foreground">Track and manage all platform orders</p>
+        <h1 className="text-3xl font-bold mb-2">{t("Order Management")}</h1>
+        <p className="text-muted-foreground">{t("Track and manage all platform orders")}</p>
       </div>
 
       <Card className="shadow-card">
@@ -37,12 +39,12 @@ const OrderManagement = () => {
           <table className="w-full">
             <thead className="border-b">
               <tr>
-                <th className="text-left p-4 font-semibold">Order ID</th>
-                <th className="text-left p-4 font-semibold">Customer</th>
-                <th className="text-left p-4 font-semibold">Entrepreneur</th>
-                <th className="text-left p-4 font-semibold">Amount</th>
-                <th className="text-left p-4 font-semibold">Status</th>
-                <th className="text-left p-4 font-semibold">Actions</th>
+                <th className="text-left p-4 font-semibold">{t("Order ID")}</th>
+                <th className="text-left p-4 font-semibold">{t("Customer")}</th>
+                <th className="text-left p-4 font-semibold">{t("Entrepreneur")}</th>
+                <th className="text-left p-4 font-semibold">{t("Amount")}</th>
+                <th className="text-left p-4 font-semibold">{t("Status")}</th>
+                <th className="text-left p-4 font-semibold">{t("Actions")}</th>
               </tr>
             </thead>
             <tbody>
@@ -53,11 +55,11 @@ const OrderManagement = () => {
                   <td className="p-4 text-muted-foreground">{order.entrepreneur}</td>
                   <td className="p-4 font-semibold">{order.amount}</td>
                   <td className="p-4">
-                    <Badge variant={getStatusVariant(order.status)}>{order.status}</Badge>
+                    <Badge variant={getStatusVariant(order.status)}>{t(order.status)}</Badge>
                   </td>
                   <td className="p-4">
                     <Button variant="outline" size="sm">
-                      View Details
+                      {t("View Details")}
                     </Button>
                   </td>
                 </tr>
